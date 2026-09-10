@@ -1,102 +1,122 @@
 # POMI
 
-> 把散落的检查单，变成医生敢直接看的一页报告
+> 把散落的检查单，变成医生敢直接看的一页报告 | Turning scattered test results into one doctor-ready report
 
-面向女性多囊卵巢综合征（PMOS）患者的健康管理工具。将散落各医院的检查单、医嘱、病历自动整理为符合循证医学规范的复诊存证报告。
+**项目定位 | Project Definition**：面向女性多囊卵巢综合征（PMOS）患者的健康管理工具，将散落各医院的检查单、医嘱、病历自动整理为符合循证医学规范的复诊存证报告。A health management tool for women with PMOS (Polycystic Ovary Syndrome) that organizes scattered medical records across hospitals into an evidence-based consultation report.
 
-**赛道**：软件应用赛道 · 滴水穿石
+**赛道 | Track**：软件应用赛道 · 滴水穿石 | Software Application · Water Drops Pierce Stone
 
-**核心原则**：不诊断、不荐药、不替代医生。AI 只做整理与核对，一切医学判断权在医生。
+**核心原则 | Core Principle**：不诊断、不荐药、不替代医生。AI 只做整理与核对，一切医学判断权在医生。No diagnosis, no prescriptions, no replacing doctors. AI only organizes and verifies — all medical decisions belong to the doctor.
 
 ---
 
-## 问题洞察
+## 问题洞察 | Problem Insight
 
 PMOS 是育龄女性最常见的内分泌疾病，全球患者超 1.7 亿，我国患者超 2400 万。它是一种需要终身管理的慢病，患者平均要在多家医院之间辗转。
 
+PMOS is the most common endocrine disorder among women of reproductive age, with over 170 million patients globally and over 24 million in China. It requires lifelong management, with patients typically navigating multiple hospitals.
+
 复诊场景存在三重困境：跨院资料缺乏连贯性、指标繁杂难以持续监测、面诊时讲不清病史。患者抱着一沓散落的检查单，医生在有限的面诊时间里拼凑不出完整病程。
+
+Follow-up visits face three challenges: fragmented records across hospitals, complex indicators hard to track over time, and patients unable to articulate their history clearly during short consultations.
 
 我们在多个地区的三甲与基层医院开展了医生与患者调研，并系统调研了四大品类的竞品产品，验证了这一痛点的真实性与市场需求。
 
----
-
-## 解决方案
-
-**核心价值**：竞品回答"我这个月身体怎么样"，POMI 回答"我的完整病程，供医生看诊"。
-
-**四大功能**：
-
-1. **检验单智能识别** — 化验单、医嘱、影像文字、门诊病历四类材料拍照上传，AI 结构化提取，每个字段经患者确认后生效
-2. **异常指标趋势线** — 跨年份、跨医院、跨单位生成长期趋势，自动处理可比性
-3. **来源签署存证** — 病历来源不可静默篡改，医患无感
-4. **用药计划管理** — 医嘱打卡可视化，换药时新旧方案差异对账，系统绝不自动停药
-
-**产品边界**：全程不诊断、不荐药、不解释病因、不分析影像本体。报告每页标注"患者自报 · 仅供参考 · 不构成诊断"。
+We conducted physician and patient surveys across multiple regions and systematically analyzed competitors across four categories, validating the pain point and market demand.
 
 ---
 
-## 创新性
+## 解决方案 | Solution
 
-### 循证医学报告框架
+**核心价值 | Core Value**：竞品回答"我这个月身体怎么样"，POMI 回答"我的完整病程，供医生看诊"。Competitors answer "how am I this month"; POMI answers "here is my complete disease course, for the doctor."
+
+**四大功能 | Four Core Features**：
+
+1. **检验单智能识别 | Smart Medical Record Recognition** — 化验单、医嘱、影像文字、门诊病历四类材料拍照上传，AI 结构化提取，每个字段经患者确认后生效。Four types of medical documents uploaded by photo, AI extracts structured data, each field confirmed by patient before taking effect.
+
+2. **异常指标趋势线 | Abnormal Indicator Trends** — 跨年份、跨医院、跨单位生成长期趋势，自动处理可比性。Long-term trends across years, hospitals, and units, with automatic comparability handling.
+
+3. **来源签署存证 | Source Attestation** — 病历来源不可静默篡改，医患无感。Medical record sources cannot be silently tampered with, seamless for both patient and doctor.
+
+4. **用药计划管理 | Medication Management** — 医嘱打卡可视化，换药时新旧方案差异对账，系统绝不自动停药。Medication tracking visualization, reconciliation when prescriptions change, system never auto-discontinues medication.
+
+**产品边界 | Product Boundary**：全程不诊断、不荐药、不解释病因、不分析影像本体。报告每页标注"患者自报 · 仅供参考 · 不构成诊断"。No diagnosis, no prescriptions, no explaining causes, no analyzing imaging. Every page labeled "patient self-reported · for reference only · not a diagnosis."
+
+---
+
+## 创新性 | Innovation
+
+### 循证医学报告框架 | Evidence-Based Report Framework
 
 报告遵循国际循证指南与门诊 SOAP 结构，经多学科医学顾问团队逐项校准。报告不是自由文本生成，而是确定性框架驱动。
 
-### 合规即设计
+Reports follow international evidence-based guidelines and clinical SOAP structure, calibrated by a multidisciplinary medical advisory team. Reports are deterministic framework-driven, not free-text generation.
+
+### 合规即设计 | Compliance by Design
 
 不诊断、不荐药、不替代医生，不是免责声明，而是产品架构级决策：模型只能生成"待确认草稿"，异常标注由确定性代码计算，患者自述原样呈现。把 AI 关在规则里。
 
-### 多学科医学顾问团队
+No diagnosis, no prescriptions, no replacing doctors — not a disclaimer but an architectural decision: models only generate "drafts for confirmation", abnormal flags computed by deterministic code, patient narratives preserved verbatim. Keeping AI inside rules.
+
+### 多学科医学顾问团队 | Multidisciplinary Medical Advisory Team
 
 顾问团按多学科配置（生殖、代谢、影像、病理），来自多家三甲医院。机构支持：大湾区中医药真实世界研究中心联合指导。顾问以"指导/顾问"名义参与，不构成对产品疗效的证明。
 
+Advisors span multiple disciplines (reproductive, metabolic, imaging, pathology), from multiple tertiary hospitals. Institutional support: Greater Bay Area Traditional Chinese Medicine Real-World Research Center. Advisors participate in "guidance/advisory" capacity, not constituting endorsement of product efficacy.
+
 ---
 
-## Demo 完成度
+## Demo 完成度 | Demo Readiness
 
 不做 PPT 产品。核心功能已交付可用，包括注册登录、四类材料 AI 识别、字段级确认、趋势可视化、用药打卡与对账、经期/体重记录、三层复诊报告与 PDF 导出。区块链存证为前端演示阶段，真实上链接口已预留。
 
+No slide-ware. Core features delivered and functional, including registration, four-type AI recognition, field-level confirmation, trend visualization, medication tracking, cycle/weight logging, three-layer consultation report and PDF export. Blockchain attestation is at front-end demo stage, real on-chain interface reserved.
+
 Web 与 Android 均可体验，数据均为模拟演示材料。
 
----
-
-## 技术实现
-
-刻意轻量的架构，刻意严格的规则——省下来的复杂度，全部花在数据可信度上。
-
-- 全栈架构：移动端 + 轻量后端，Monorepo 工程结构
-- 核心难点：医疗材料结构化识别、异步任务幂等与可恢复、用药对账的确定性、不可变报告快照
-- 安全隐私：全程加密、文件权限隔离、日志脱敏、首次 OCR 前用户授权
-- 质量保障：模拟材料评测集、多类验收测试、CI 全量通过
+Available on Web and Android, all data is simulated demo material.
 
 ---
 
-## 商业价值
+## 技术实现 | Technical Implementation
 
-临床合作网络已初步建立，与多家三甲医院医生达成意向合作。技术顾问具备 NMPA 医疗器械注册证实操经验，合规路径清晰。
+刻意轻量的架构，刻意严格的规则——省下来的复杂度，全部花在数据可信度上。Intentionally lightweight architecture, intentionally strict rules — complexity saved is all spent on data trustworthiness.
 
-商业模式采用 freemium + B2B 方向，合规资质路径已规划。
-
-### 路线图
-
-- **P0 已交付**：全流程可用 App + Web
-- **P1**：真实存证 · 医生端
-- **P2**：医院试点 · 多病种迁移
+- 全栈架构：移动端 + 轻量后端，Monorepo 工程结构 | Full-stack: mobile + lightweight backend, Monorepo
+- 核心难点：医疗材料结构化识别、异步任务幂等与可恢复、用药对账的确定性、不可变报告快照 | Core challenges: medical document structured recognition, async task idempotency, deterministic medication reconciliation, immutable report snapshots
+- 安全隐私：全程加密、文件权限隔离、日志脱敏、首次 OCR 前用户授权 | Security: end-to-end encryption, file access control, log anonymization, pre-OCR user consent
+- 质量保障：模拟材料评测集、多类验收测试、CI 全量通过 | QA: simulated material evaluation set, multi-category acceptance tests, CI passing
 
 ---
 
-## 团队
+## 商业价值 | Commercial Value
 
-五人团队，三阶段迭代开发：
+临床合作网络已初步建立，与多家三甲医院医生达成意向合作。技术顾问具备 NMPA 医疗器械注册证实操经验，合规路径清晰。商业模式采用 freemium + B2B 方向，合规资质路径已规划。
 
-| 角色 | 职责 |
+Clinical collaboration network established, with intent-to-collaborate agreements with physicians at multiple tertiary hospitals. Technical advisor holds NMPA medical device registration experience, compliance pathway clear. Business model: freemium + B2B, regulatory pathway planned.
+
+### 路线图 | Roadmap
+
+- **P0 已交付 | Delivered**：全流程可用 App + Web
+- **P1**：真实存证 · 医生端 | Real attestation · Doctor portal
+- **P2**：医院试点 · 多病种迁移 | Hospital pilot · Multi-disease expansion
+
+---
+
+## 团队 | Team
+
+五人团队，三阶段迭代开发。Five-person team, three-phase iterative development.
+
+| 角色 Role | 职责 Responsibility |
 |---|---|
-| Team Lead | 需求定义、用户调研、路演主讲 |
-| Medical Advisor & Full-stack Dev | 循证框架校准、App 与 Web 开发、运维 |
-| Product Manager | 产品边界、交互设计、竞品调研 |
-| Full-stack Dev & Compliance | 技术架构、安全隐私、合规路径 |
-| AI Engineer | 文档理解链路、评测集、数据策略 |
+| Team Lead | 需求定义、用户调研、路演主讲 | Requirements, user research, pitch |
+| Medical Advisor & Full-stack Dev | 循证框架校准、App 与 Web 开发、运维 | Evidence framework, App/Web dev, ops |
+| Product Manager | 产品边界、交互设计、竞品调研 | Product scope, interaction design, competitive analysis |
+| Full-stack Dev & Compliance | 技术架构、安全隐私、合规路径 | Architecture, security, compliance |
+| AI Engineer | 文档理解链路、评测集、数据策略 | Document understanding, evaluation, data strategy |
 
 ---
 
-*POMI · 软件应用赛道 · 滴水穿石*
+*POMI · 软件应用赛道 · 滴水穿石 | Software Application · Water Drops Pierce Stone*
 *所有演示均为模拟医疗材料 · 本产品不诊断、不荐药、不替代医生 · 报告仅供医生参考*
+*All demos use simulated medical materials · This product does not diagnose, prescribe, or replace doctors · Reports are for physician reference only*
